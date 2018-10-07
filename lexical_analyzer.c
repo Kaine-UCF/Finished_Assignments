@@ -177,9 +177,48 @@ void DFA_Alpha(LexerState* lexerState)
     {
       case 'b' : //begin
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"b");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'e')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"be");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'g')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"beg");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'i')
+            {
+              if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]) && !isdigit(lexerState->sourceCode[lexerState->charInd+4]))
+              {
+                Token token;
+                token.id = identsym;
+                strcpy(token.lexeme,"begi");
+                addToken(&lexerState->tokenList, token);
+                lexerState->charInd += 4;
+                return;  
+              }
               if(lexerState->sourceCode[lexerState->charInd+4] == 'n')
               {
                 if(!isalpha(lexerState->sourceCode[lexerState->charInd+5]))
@@ -219,15 +258,57 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
               }
+            }
+          }
+        }
         
         break;
       }
       
       case 'w' : //while, write
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"w");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'h')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"wh");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'i')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"whi");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'l')
+            {
+              if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]) && !isdigit(lexerState->sourceCode[lexerState->charInd+4]))
+              {
+                Token token;
+                token.id = identsym;
+                strcpy(token.lexeme,"whil");
+                addToken(&lexerState->tokenList, token);
+                lexerState->charInd += 4;
+                return;  
+              }
               if(lexerState->sourceCode[lexerState->charInd+4] == 'e')
               {
                 if(!isalpha(lexerState->sourceCode[lexerState->charInd+5]))
@@ -267,9 +348,42 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
               }
+            }
+          }
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'r')
+        {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"wr");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 2;
+          return;  
+        }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'i')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"wri");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 't')
+            {
+              if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]) && !isdigit(lexerState->sourceCode[lexerState->charInd+4]))
+              {
+                Token token;
+                token.id = identsym;
+                strcpy(token.lexeme,"writ");
+                addToken(&lexerState->tokenList, token);
+                lexerState->charInd += 4;
+                return;  
+              }
               if(lexerState->sourceCode[lexerState->charInd+4] == 'e')
               {
                 if(!isalpha(lexerState->sourceCode[lexerState->charInd+5]))
@@ -309,14 +423,56 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
               }
+            }
+          }
+        }
         break;
       }
       
       case 'c' : //const, call
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"c");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'o')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"co");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'n')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"con");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 's')
+            {
+              if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]) && !isdigit(lexerState->sourceCode[lexerState->charInd+4]))
+              {
+                Token token;
+                token.id = identsym;
+                strcpy(token.lexeme,"cons");
+                addToken(&lexerState->tokenList, token);
+                lexerState->charInd += 4;
+                return;  
+              }
               if(lexerState->sourceCode[lexerState->charInd+4] == 't')
               {
                 if(!isalpha(lexerState->sourceCode[lexerState->charInd+5]))
@@ -356,8 +512,31 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
               }
+            }
+          }
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'a')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"ca");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'l')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"cal");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'l')
             {
               if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]))
@@ -397,12 +576,33 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
             }
+          }
+        }
         break;
       }
       
       case 'e' : //end, else
       {
+         if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"e");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 1;
+            return;  
+          } 
         if(lexerState->sourceCode[lexerState->charInd+1] == 'n')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"en");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'd')
           {
             if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]))
@@ -442,8 +642,29 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
           }
+        }
          if(lexerState->sourceCode[lexerState->charInd+1] == 'l')
+         {
+             if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"el");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 's')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"els");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'e')
             {
               if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]))
@@ -483,12 +704,23 @@ void DFA_Alpha(LexerState* lexerState)
                     }
                   }
             }
+          }
+         }
         
         break;
       }
       
       case 'd' : //do
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"d");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'o')
         {
           if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]))
@@ -534,7 +766,26 @@ void DFA_Alpha(LexerState* lexerState)
       
       case 'v' : //var
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"v");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'a')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"va");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'r')
           {
             if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
@@ -574,6 +825,7 @@ void DFA_Alpha(LexerState* lexerState)
               }
             }
           }
+        }
         
         break;
       }
@@ -593,7 +845,27 @@ void DFA_Alpha(LexerState* lexerState)
             }  
         }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'e')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"re");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'a')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"rea");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'd')
             {
               if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]))
@@ -633,7 +905,8 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
             }
-        
+        }
+      }
         break;
       }
       
@@ -696,13 +969,92 @@ void DFA_Alpha(LexerState* lexerState)
       
       case 'p' : //procedure
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"p");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'r')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"pr");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'o')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"pro");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'c')
+            {
+              if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]) && !isdigit(lexerState->sourceCode[lexerState->charInd+4]))
+              {
+                Token token;
+                token.id = identsym;
+                strcpy(token.lexeme,"proc");
+                addToken(&lexerState->tokenList, token);
+                lexerState->charInd += 4;
+                return;  
+              }
               if(lexerState->sourceCode[lexerState->charInd+4] == 'e')
+              {
+                if(!isalpha(lexerState->sourceCode[lexerState->charInd+5]) && !isdigit(lexerState->sourceCode[lexerState->charInd+5]))
+                {
+                  Token token;
+                  token.id = identsym;
+                  strcpy(token.lexeme,"proce");
+                  addToken(&lexerState->tokenList, token);
+                  lexerState->charInd += 5;
+                  return;  
+                }
                 if(lexerState->sourceCode[lexerState->charInd+5] == 'd')
+                {
+                  if(!isalpha(lexerState->sourceCode[lexerState->charInd+6]) && !isdigit(lexerState->sourceCode[lexerState->charInd+6]))
+                  {
+                    Token token;
+                    token.id = identsym;
+                    strcpy(token.lexeme,"proced");
+                    addToken(&lexerState->tokenList, token);
+                    lexerState->charInd += 6;
+                    return;  
+                  }
                   if(lexerState->sourceCode[lexerState->charInd+6] == 'u')
+                  {
+                    if(!isalpha(lexerState->sourceCode[lexerState->charInd+7]) && !isdigit(lexerState->sourceCode[lexerState->charInd+7]))
+                    {
+                      Token token;
+                      token.id = identsym;
+                      strcpy(token.lexeme,"procedu");
+                      addToken(&lexerState->tokenList, token);
+                      lexerState->charInd += 7;
+                      return;  
+                    }
                     if(lexerState->sourceCode[lexerState->charInd+7] == 'r')
+                    {
+                      if(!isalpha(lexerState->sourceCode[lexerState->charInd+8]) && !isdigit(lexerState->sourceCode[lexerState->charInd+8]))
+                      {
+                        Token token;
+                        token.id = identsym;
+                        strcpy(token.lexeme,"procedur");
+                        addToken(&lexerState->tokenList, token);
+                        lexerState->charInd += 8;
+                        return;  
+                      }
                       if(lexerState->sourceCode[lexerState->charInd+8] == 'e')
                       {
                         if(!isalpha(lexerState->sourceCode[lexerState->charInd+9]))
@@ -742,13 +1094,49 @@ void DFA_Alpha(LexerState* lexerState)
                         }
                       }
                       }
+            }
+           }
+          }
+        }
+      }
+    }
+}
         break;
       }
       
       case 't' : //then
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"t");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
         if(lexerState->sourceCode[lexerState->charInd+1] == 'h')
+        {
+          if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"th");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
           if(lexerState->sourceCode[lexerState->charInd+2] == 'e')
+          {
+            if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]) && !isdigit(lexerState->sourceCode[lexerState->charInd+3]))
+            {
+              Token token;
+              token.id = identsym;
+              strcpy(token.lexeme,"the");
+              addToken(&lexerState->tokenList, token);
+              lexerState->charInd += 3;
+              return;  
+            }
             if(lexerState->sourceCode[lexerState->charInd+3] == 'n')
             {
               if(!isalpha(lexerState->sourceCode[lexerState->charInd+4]))
@@ -788,12 +1176,33 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
             }
+          }
+        }
         break;
       }
       
       case 'o' : //odd
       {
+        if(!isalpha(lexerState->sourceCode[lexerState->charInd+1]) && !isdigit(lexerState->sourceCode[lexerState->charInd+1]))
+        {
+          Token token;
+          token.id = identsym;
+          strcpy(token.lexeme,"o");
+          addToken(&lexerState->tokenList, token);
+          lexerState->charInd += 1;
+          return;  
+        }
          if(lexerState->sourceCode[lexerState->charInd+1] == 'd')
+         {
+           if(!isalpha(lexerState->sourceCode[lexerState->charInd+2]) && !isdigit(lexerState->sourceCode[lexerState->charInd+2]))
+          {
+            Token token;
+            token.id = identsym;
+            strcpy(token.lexeme,"od");
+            addToken(&lexerState->tokenList, token);
+            lexerState->charInd += 2;
+            return;  
+          }
             if(lexerState->sourceCode[lexerState->charInd+2] == 'd')
             {
               if(!isalpha(lexerState->sourceCode[lexerState->charInd+3]))
@@ -833,12 +1242,12 @@ void DFA_Alpha(LexerState* lexerState)
                   }
                 }
             }
+          }
         break;
       }
       
       default : // a variable
       {
-        
         char working[12];
         working[0] = lexerState->sourceCode[lexerState->charInd];
         if(isalpha(working[0])) //should always be true
@@ -846,7 +1255,7 @@ void DFA_Alpha(LexerState* lexerState)
           working[1] = lexerState->sourceCode[lexerState->charInd+1];
           if(!isalpha(working[1]) && !isdigit(working[1]))
           {
-            working[1] = '\0';
+              working[1] = '\0';
              lexerState->charInd += 1;
               Token token;
               token.id = identsym;
@@ -864,6 +1273,8 @@ void DFA_Alpha(LexerState* lexerState)
               lexerState->charInd += i;
               Token token;
               token.id = identsym;
+              if(strcmp(working,"mult;") == 0)
+                strcpy(working,"mult");
               strcpy(token.lexeme,working);
               addToken(&lexerState->tokenList, token);
               return;
@@ -1072,6 +1483,15 @@ void DFA_Special(LexerState* lexerState)
               lexerState->charInd += 1;
               return;
             }
+            default : // if its not a comment, its the division sign
+            {
+              Token token;
+              token.id = slashsym;
+              strcpy(token.lexeme,"/");
+              addToken(&lexerState->tokenList, token);
+              return;  
+              break;
+            }
           }
           break;
         }
@@ -1097,7 +1517,7 @@ void DFA_Special(LexerState* lexerState)
               token.id = gtrsym;
               strcpy(token.lexeme,">");
               addToken(&lexerState->tokenList, token);
-              lexerState->charInd+=2;
+              lexerState->charInd+=1;
               return;
               break;
             }
